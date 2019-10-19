@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<!-- Properties File Load -->
+	<context:property-placeholder
+		location="classpath:swim.properties" />
+
+	<!-- Define your beans here -->
+
+	<bean id="logger" class="com.demo.LoggerConfiguration"
+		init-method="initLogger">
+		<property name="rootLoggerLevel" value="FINE" />
+		<property name="printedLoggerLevel" value="FINE" />
+	</bean>
+
+	<bean id="coach" class="com.demo.BaseballCoach">
+		<constructor-arg ref="fortune" />
+	</bean>
+
+	<bean id="fortune" class="com.demo.SadFortuneService">
+	</bean>
+
+	<bean id="swimmingCoach" class="com.demo.SwimmingCoach">
+		<property name="fortuneService" ref="fortune" />
+		<property name="emailAddress" value="realEmail@gmail.com" />
+		<property name="team" value="TeamFun" />
+	</bean>
+
+	<bean id="swimmingCoachFile" class="com.demo.SwimmingCoach">
+		<property name="fortuneService" ref="fortune" />
+		<property name="emailAddress" value="${email}" />
+		<property name="team" value="${team}" />
+	</bean>
+
+</beans>
+
+
+
+
+
