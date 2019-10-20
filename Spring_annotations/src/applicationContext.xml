@@ -7,10 +7,14 @@
     http://www.springframework.org/schema/context
     http://www.springframework.org/schema/context/spring-context.xsd">
 
-
 	<!-- Enabling component scanning -->
 
 	<context:component-scan base-package="com.demo" />
+
+	<!-- Load properties file -->
+	<context:property-placeholder
+		location="classpath:swim.properties" />
+
 
 
 	<!-- Define your beans here -->
