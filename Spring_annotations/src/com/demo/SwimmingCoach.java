@@ -1,8 +1,12 @@
 package com.demo;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 /*
@@ -11,6 +15,7 @@ import org.springframework.stereotype.Component;
 	name is NOT converted, i.e. URLSth --> URLSth.
 */
 @Component
+@Scope("prototype")
 public class SwimmingCoach implements Coach {
 
 	/*
@@ -56,7 +61,28 @@ public class SwimmingCoach implements Coach {
 	public String getDailyFortune() {
 		return fortuneService.getFortune();
 	}
-
+	
+	/*
+	 * BEAN LIFECYCLE METHODS
+	 * 
+	 * @PostContruct and @PreDestroy 
+	 * - can have any access modifier
+	 * - any return type, void is mostly used as any other return type is not captured
+	 * - any method name
+	 * - cannot accept any arguments
+	 */
+	
+	@PostConstruct
+	public void init() {
+		System.out.println("Swimming Coach - initialization");
+	}
+	
+	// No action when SCOPE = prototype
+	@PreDestroy
+	public void des() {
+		System.out.println("Swimming Coach - destroy");
+	}
+	
 	@Override
 	public String toString() {
 		return "SwimmingCoach [email=" + email + ", team=" + team + "]";
