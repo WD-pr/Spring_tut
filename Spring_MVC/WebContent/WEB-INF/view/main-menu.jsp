@@ -16,7 +16,12 @@
 	<a href="second/showForm">Show Form</a>
 	
 	<br>
-
+	
+	<a href="person/">Show Person Form</a>
+	
+	<br>
+	<br>
+	
 	<input type="button" onclick="doSomeWork()" value="Click Me" />
 
 	<img src="${pageContext.request.contextPath}/resources/images/logo.JPG">

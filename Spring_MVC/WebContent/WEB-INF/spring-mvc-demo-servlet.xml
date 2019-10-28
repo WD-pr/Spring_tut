@@ -1,24 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
 	xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="
-		http://www.springframework.org/schema/beans
-    	http://www.springframework.org/schema/beans/spring-beans.xsd
-    	http://www.springframework.org/schema/context
-    	http://www.springframework.org/schema/context/spring-context.xsd
-    	http://www.springframework.org/schema/mvc
-        http://www.springframework.org/schema/mvc/spring-mvc.xsd">
-
+                http://www.springframework.org/schema/beans     
+                http://www.springframework.org/schema/beans/spring-beans.xsd     
+                http://www.springframework.org/schema/context     
+                http://www.springframework.org/schema/context/spring-context.xsd     
+                http://www.springframework.org/schema/mvc         
+                http://www.springframework.org/schema/mvc/spring-mvc.xsd 
+                http://www.springframework.org/schema/util     
+                http://www.springframework.org/schema/util/spring-util.xsd">
+                
 	<!-- Add support for component scanning -->
-	<context:component-scan base-package="com.springdemo" />
+	<context:component-scan
+		base-package="com.springdemo" />
+		
+	<!-- Load properties file using bean id = countries or languages -->	
+		<util:properties id="countries" location="classpath:../countries.properties" /> 
+		
+		<util:properties id="languages" location="classpath:../languages.properties" /> 
 
 	<!-- Add support for conversion, formatting and validation support -->
-	<mvc:annotation-driven/>
-	
+	<mvc:annotation-driven />
+
 	<!-- Add resources -->
-	<mvc:resources mapping="/resources/**" location="/resources/"/> 
+	<mvc:resources mapping="/resources/**"
+		location="/resources/" />
 
 	<!-- Define Spring MVC view resolver -->
 	<bean
