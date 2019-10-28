@@ -1,2 +1,6 @@
 */*
 !*/src/
+
+!*/WebContent/
+*/WebContent/META-INF
+*/WebContent/WEB-INF/lib
