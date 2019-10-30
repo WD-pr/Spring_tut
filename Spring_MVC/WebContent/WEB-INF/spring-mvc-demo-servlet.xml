@@ -13,15 +13,17 @@
                 http://www.springframework.org/schema/mvc/spring-mvc.xsd 
                 http://www.springframework.org/schema/util     
                 http://www.springframework.org/schema/util/spring-util.xsd">
-                
+
 	<!-- Add support for component scanning -->
 	<context:component-scan
 		base-package="com.springdemo" />
-		
-	<!-- Load properties file using bean id = countries or languages -->	
-		<util:properties id="countries" location="classpath:../countries.properties" /> 
-		
-		<util:properties id="languages" location="classpath:../languages.properties" /> 
+
+	<!-- Load properties file using bean id = countries or languages -->
+	<util:properties id="countries"
+		location="classpath:../countries.properties" />
+
+	<util:properties id="languages"
+		location="classpath:../languages.properties" />
 
 	<!-- Add support for conversion, formatting and validation support -->
 	<mvc:annotation-driven />
@@ -35,6 +37,12 @@
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix" value="/WEB-INF/view/" />
 		<property name="suffix" value=".jsp" />
+	</bean>
+
+	<!-- Load custom message resources -->
+	<bean id="messageSource"
+		class="org.springframework.context.support.ResourceBundleMessageSource">
+		<property name="basenames" value="resources/errorMessages"></property>
 	</bean>
 
 </beans>

@@ -11,7 +11,9 @@
 <body>
 
 	Registration confirmed for ${person.firstName} ${person.lastName}.
+	<br> Postal Code: ${person.postalCode}
 	<br> Country: ${person.country}
+	<br> Height: ${person.height}
 	<br> Chose programming language: ${person.programmingLanguage}
 	<br> Chose operating systems:
 

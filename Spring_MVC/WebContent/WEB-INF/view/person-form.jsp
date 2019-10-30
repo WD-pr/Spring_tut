@@ -5,6 +5,12 @@
 
 <title>Person Registration Page</title>
 
+<style type="text/css">
+.error {
+	color: red
+}
+</style>
+
 </head>
 
 <body>
@@ -14,7 +20,18 @@
 	First name: <form:input path="firstName" />
 		<br>
 		<br>
-	Last name: <form:input path="lastName" />
+		Last name (*): <form:input path="lastName" />
+		<form:errors path="lastName" cssClass="error" />
+		<br>
+		<br>
+		
+		Postal Code: <form:input path="postalCode" />
+		<form:errors path="postalCode" cssClass="error" />
+		<br>
+		<br>
+		
+		Height: <form:input path="height" />
+		<form:errors path="height" cssClass="error" />
 		<br>
 		<br>
 		<!-- Manual options -->
@@ -47,15 +64,18 @@
 		<form:radiobuttons path="programmingLanguage"
 			items="${programmingLanguagesMap}" />
 
-		<!-- Counties options retrieved from Person -->
+		<!-- Countries options retrieved from Person -->
 		<br>
 		<form:checkboxes path="operatingSystems"
 			items="${person.operatingSystemsList}" />
+		<form:errors path="operatingSystems" cssClass="error" />
 
 		<br>
 		<input type="submit" value="Submit">
 
 	</form:form>
+
+	<i> (*) field is required. </i>
 
 </body>
 </html>
