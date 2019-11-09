@@ -23,19 +23,33 @@
 	<div id="container">
 		<div id="content">
 
+			<input type="button" value="Add Customer"
+				onclick="window.location.href='showAddForm'; return false;"
+				class="add-button" />
+
 			<table>
 				<tr>
 					<th>First Name</th>
 					<th>Last Name</th>
 					<th>Email Address</th>
+					<th>Action</th>
+					
 				</tr>
 
 				<c:forEach var="cust" items="${customers}">
+				
+					<c:url var="updateLink" value="/customer/showFormForUpdate">
+						<c:param name="customerId" value="${cust.id}" />
+					</c:url>
 
 					<tr>
 						<td>${cust.firstName}</td>
 						<td>${cust.lastName}</td>
 						<td>${cust.email}</td>
+					
+					
+						<td><a href="${updateLink}">Update</a></td>
+
 					</tr>
 
 				</c:forEach>
