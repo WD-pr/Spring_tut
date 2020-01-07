@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<!-- Parent defines Maven defaults - UTF-8, default compiler level (current 
+			Java 8) and others (for dependencies and default configuration of spring 
+			boot plugin) -->
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.2.2.RELEASE</version> <!-- Specified version of spring boot - dependencies inherit it without need 
+			to list individual versions -->
+		<relativePath /> <!-- lookup parent from repository -->
+	</parent>
+	<groupId>com.springboot.demo</groupId>
+	<artifactId>myspringbootapp</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>myspringbootapp</name>
+	<description>Demo project for Spring Boot</description>
+
+	<properties>
+		<!-- Overwrite defaults -->
+		<java.version>1.8</java.version>
+		<!-- To fix imported spring boot project -->
+		<maven-jar-plugin.version>3.1.1</maven-jar-plugin.version>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+
+		<!-- Support for spring boot actuator for managing application (~ REST endpoints) -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
+		
+		<!-- Support for spring security (~ automatically secures REST endpoints without /actuator/health and /actuator/info). 
+		Defaults - user: user, password: generated in a console. -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
+		
+		<!-- Support for automatic reloading - no need to restart server -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+		</dependency>
+
+		<dependency>
+			<!-- Contains: spring-web, spring-webmvc, hibernate-validator, json, tomcat 
+				... -->
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+			<exclusions>
+				<exclusion>
+					<groupId>org.junit.vintage</groupId>
+					<artifactId>junit-vintage-engine</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>
